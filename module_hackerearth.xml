@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_hackerearth" default="compile.module.hackerearth">
+  <dirname property="module.hackerearth.basedir" file="${ant.file.module_hackerearth}"/>
+  
+  <property name="module.jdk.home.hackerearth" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.hackerearth" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.hackerearth" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.hackerearth" value="-encoding UTF-8 -source 1.8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="hackerearth.output.dir" value="${module.hackerearth.basedir}/out/production/HackerEarth"/>
+  <property name="hackerearth.testoutput.dir" value="${module.hackerearth.basedir}/out/test/HackerEarth"/>
+  
+  <path id="hackerearth.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="hackerearth.module.production.classpath">
+    <path refid="${module.jdk.classpath.hackerearth}"/>
+  </path>
+  
+  <path id="hackerearth.runtime.production.module.classpath">
+    <pathelement location="${hackerearth.output.dir}"/>
+  </path>
+  
+  <path id="hackerearth.module.classpath">
+    <path refid="${module.jdk.classpath.hackerearth}"/>
+    <pathelement location="${hackerearth.output.dir}"/>
+  </path>
+  
+  <path id="hackerearth.runtime.module.classpath">
+    <pathelement location="${hackerearth.testoutput.dir}"/>
+    <pathelement location="${hackerearth.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.hackerearth">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.hackerearth">
+    <patternset refid="excluded.from.module.hackerearth"/>
+  </patternset>
+  
+  <path id="hackerearth.module.sourcepath">
+    <dirset dir="${module.hackerearth.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.hackerearth" depends="compile.module.hackerearth.production,compile.module.hackerearth.tests" description="Compile module HackerEarth"/>
+  
+  <target name="compile.module.hackerearth.production" depends="register.custom.compilers" description="Compile module HackerEarth; production classes">
+    <mkdir dir="${hackerearth.output.dir}"/>
+    <javac2 destdir="${hackerearth.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.hackerearth}/javac">
+      <compilerarg line="${compiler.args.hackerearth}"/>
+      <bootclasspath refid="hackerearth.module.bootclasspath"/>
+      <classpath refid="hackerearth.module.production.classpath"/>
+      <src refid="hackerearth.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.hackerearth"/>
+    </javac2>
+    
+    <copy todir="${hackerearth.output.dir}">
+      <fileset dir="${module.hackerearth.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.hackerearth.tests" depends="register.custom.compilers,compile.module.hackerearth.production" description="compile module HackerEarth; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.hackerearth" description="cleanup module">
+    <delete dir="${hackerearth.output.dir}"/>
+    <delete dir="${hackerearth.testoutput.dir}"/>
+  </target>
+</project>
