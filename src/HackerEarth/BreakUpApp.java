@@ -37,7 +37,7 @@ class BreakUpApp{
                 }
 
             }else{// m's Message
-                String[] tempMessage = linesOfConversation[counter].split("//s") ;
+                String tempMessage = linesOfConversation[counter].split("//s") ;
                 for(String word: tempMessage){
                     if(word.matches(".*\\d+.*")){
                         days[(Integer.parseInt(word) -1)] += 1 ;
@@ -65,7 +65,7 @@ class BreakUpApp{
             System.out.println("Date") ;
         }
         else{
-            System.out.println("No Date") ;
+            System.out.println("No date") ;
         }
 
     }
