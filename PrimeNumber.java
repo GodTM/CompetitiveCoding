@@ -1,45 +1,44 @@
 import java.util.* ;
 
 class PrimeNumber{
+
+    public static boolean isPrime(int num){
+        if(num<2){
+            return false ;
+        }
+        else if(num==2){
+            return true;
+        }
+        if(num>2 && num%2==0){
+            return false ;
+        }
+        int upperLimit = (int) Math.floor(Math.sqrt(num)) + 1 ;
+        for(int counter = 3; counter< upperLimit; counter++){
+            if(num%counter ==0){
+                return false ;
+            }
+        }
+        return true;
+
+    }
     public static void main(String args[]){
 
-        int limitingInt = - 1 ;
-        int[] possiblePrimes ;
         Scanner input = new Scanner(System.in) ;
         try{
-            // integer input
-            limitingInt = Integer.parseInt(input.nextLine().trim()) ;
-            possiblePrimes = new int[limitingInt] ;
-
-            if(limitingInt>=2){
-                for(int counter=2 ;counter<limitingInt; counter++){
-
-                    int sqrRoot = (int) Math.floor(Math.sqrt(counter)) ;
-                    for(int counter2 = 1 ; counter2<sqrRoot ; counter2++){
-                        if(counter2==1){
-                            possiblePrimes[2] = 2 ;
-                            possiblePrimes[3] = 3 ;
-                            continue ;
-                        }
-                        else if(counter!=1 && counter2%counter ==0){
-                            break ;
-                        }
-
-                        if(counter2==sqrRoot-1){
-                            possiblePrimes[counter] = counter ;
-                        }
-                    }
-                }
-
-            }
-            for(int counter =0 ; counter<possiblePrimes.length; counter++){
-                if(possiblePrimes[counter]!= 0){
-                    System.out.print(counter+" ");
+            int toBeProcessed = Integer.parseInt(input.nextLine().trim()) ;
+            ArrayList<Integer> array = new ArrayList<Integer>() ;
+            for(int counter=2 ; counter<= toBeProcessed ; counter++){
+                if(isPrime(counter)){
+                    array.add(counter) ;
                 }
             }
-
+            for(int element: array){
+                System.out.print(element+" ") ;
+            }
         }catch(NumberFormatException e){
             System.out.println(e+" is not a number") ;
         }
+
+
     }
 }
