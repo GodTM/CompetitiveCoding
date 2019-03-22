@@ -1,7 +1,8 @@
+package HackerEarth ;
 import java.util.* ;
 
-class BreakUpApp{
-
+class BreakUpApp {
+    /*
     public static void main(String args[]){
 
         Scanner input = new Scanner(System.in) ;
@@ -24,7 +25,8 @@ class BreakUpApp{
 
         /**GF's message is on an even line
          M's message is on an odd line*/
-        // iterating over the lines
+    // iterating over the lines
+/*
         int otherScore, score19, score20 ;
         for(int counter = 0 ; counter<linesOfConversation.length ; counter++){
             // gf's message
@@ -36,12 +38,15 @@ class BreakUpApp{
                     }
                 }
 
-            }else{// m's Message
+            }else{
+                /*
+                // m's Message
                 String tempMessage = linesOfConversation[counter].split("//s") ;
                 for(String word: tempMessage){
                     if(word.matches(".*\\d+.*")){
                         days[(Integer.parseInt(word) -1)] += 1 ;
                     }
+
                 }
             }
         }
@@ -69,5 +74,8 @@ class BreakUpApp{
         }
 
     }
+
+}
+*/
 
 }
