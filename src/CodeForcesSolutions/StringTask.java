@@ -1,4 +1,4 @@
-//package CodeForcesSolutions;
+package CodeForcesSolutions;
 
 import java.util.Iterator;
 import java.util.LinkedList;
