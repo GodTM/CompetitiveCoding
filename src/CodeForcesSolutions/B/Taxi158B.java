@@ -1,4 +1,4 @@
-package CodeForcesSolutions;
+package CodeForcesSolutions.B;
 /*
 * After sorting the array, look for the sums of begininng entries and the last entries as a CLUE
 *
