@@ -1,6 +1,8 @@
 package CodeForcesSolutions.A;
 
 
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class LuckyDivision {
@@ -36,37 +38,64 @@ public class LuckyDivision {
             else {
 
                 //check division by 7 or 4
-                if(in%luckyFour==0 || in%luckySeven==0){
-                    System.out.println(Y);
-                }
-
-
+                LinkedList<String> list = new LinkedList<>();
+                if (in % luckyFour == 0 || in % luckySeven == 0) { System.out.println(Y); }
                 // check division by the rest of the numbers
                 else{
-                    for(int counter = 8 ; counter<= in/2 ; counter++){
+                    boolean isDivisible = false;
+                    for (int counter = 8; counter <= in / 2; counter++) {
 
-                        if(in % counter ==0){
-                            String[] toBeProcessed = String.valueOf(counter).split("") ;
-                            for(String s:toBeProcessed){
-                                if(!(s.equals("4") || s.equals("7"))){
-                                    partialLuckCheck = false ;
-                                }
-                            }
-                            if(partialLuckCheck){
-                                System.out.println(Y);
-                            }
-
+                        if (in % counter == 0) {
+                            list.add(String.valueOf(counter));
+                            isDivisible = true;
                         }
                     }
 
+                    Iterator<String> i = list.listIterator();
+                    boolean[] allDivs = new boolean[list.size()];
+                    for (int counter = 0 ; counter< allDivs.length ; counter++) { allDivs[counter] = true; }
+
+                    int counter = 0;
+                    while (i.hasNext()) {
+                        String nextInt = i.next().trim();
+                        String[] intArr = nextInt.split("");
+                        for (String s : intArr) {
+                            if (!(s.equals("4") || s.equals("7"))) {
+                                partialLuckCheck = false;
+                                allDivs[counter] = false;
+                            }
+                        }
+                        counter++ ;
+                    }
+                    boolean found = false ;
+                    for (boolean b : allDivs) {
+                        if (b && isDivisible) {
+                            System.out.println(Y);
+                            found= true;
+                        }
+                    }
+                    if(!found && isDivisible){
+                        System.out.println(N);
+                    }
+                    else if (!isDivisible) {
+                        System.out.println(N);
+                    }
+
+
+
 
                 }
-
-                if(!partialLuckCheck){
-                    System.out.println(N);
-                }
-
             }
+
+
+
+
+
+
+
+
+
+
         }
     }
 }
