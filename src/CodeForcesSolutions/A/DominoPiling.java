@@ -11,12 +11,8 @@ public class DominoPiling {
         int dim2 = Integer.parseInt(inputs[1].trim()) ;
         int numberOfDomino = 0 ;
         if(dim1>=1 && dim2>=1  && dim1<=16 && dim2<=16){
-            double divided = (dim1/2.0) ;
-            double divided2 = dim2 ;
-            if(divided%2 == 0 && divided2%2==0){
-
-            }
-
+           int out = (dim1* dim2) / 2 ;
+           System.out.println(out);
         }
 
 
