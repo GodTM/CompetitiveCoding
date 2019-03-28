@@ -5,12 +5,25 @@ import java.util.Scanner;
 
 public class Problem1 {
 
+
+    // don't use this as JVM has a set call stack size.. There is too much recursion
+    /*
     public static BigInteger factorial(BigInteger n){
         if(n.equals(new BigInteger("1")) || n.equals(new BigInteger("0"))){
             return new BigInteger("1") ;
         }
         BigInteger one = new BigInteger("1") ;
         return n.multiply(factorial(new BigInteger(String.valueOf(n.subtract(one))))) ;
+    }*/
+
+    public static BigInteger factorial(BigInteger n) {
+        BigInteger result = BigInteger.ONE;
+        while (!n.equals(BigInteger.ZERO)) {
+            result = result.multiply(n);
+            n = n.subtract(BigInteger.ONE);
+        }
+
+        return result;
     }
     public static BigInteger summation(BigInteger n){
         BigInteger sum = new BigInteger("0") ;
@@ -27,7 +40,8 @@ public class Problem1 {
             if (testCases > 0 && testCases <= 100) {
                 while (testCases > 0) {
                     BigInteger n = new BigInteger(input.nextLine().trim());
-                    if (n.compareTo(new BigInteger("0"))>0  && n.compareTo(new BigInteger("1000000000"))<0) {
+
+                    if (n.compareTo(new BigInteger("0"))>0  && n.compareTo(new BigInteger("1000000000"))<=0) {
                         BigInteger P = Problem1.factorial(n);
                         BigInteger s = Problem1.summation(n);
                         if (P.mod(s).equals( BigInteger.ZERO)) {
@@ -35,8 +49,6 @@ public class Problem1 {
                         } else {
                             System.out.println("NO");
                         }
-                    }else{
-                        return;
                     }
 
                     testCases--;
@@ -44,7 +56,8 @@ public class Problem1 {
             }
 
         }catch (NumberFormatException e){
-            System.exit(-1);
+            //System.out.println("Exception");
+            return ;
         }
     }
 }
