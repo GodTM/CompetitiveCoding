@@ -5,30 +5,33 @@ import java.util.Scanner;
 public class BeautifulMatrix263A {
     static int row = 0 ;
     static int column = 0 ;
+    static int x = 3 , y = 3 ;
 
-    public static void main(String args){
+    public static void main(String args[]){
         int numberOfIterations = 0;
         Scanner input = new Scanner(System.in) ;
-        int[][] array = new int[5][5] ;
         while(numberOfIterations<5){
-            String[] inputStr = input.nextLine().trim().split("") ;
-            for(int counter = 0 ; counter< array.length ; counter++){
-               array[numberOfIterations][counter] = Integer.parseInt(inputStr[counter]) ;
+
+            String inStr = input.nextLine().trim() ;
+            boolean containsOne = inStr.contains("1") ;
+            if(containsOne){
+                row = numberOfIterations+1 ;
+                String[] toBeProcessed =  inStr.split("\\s") ;
+                int counter = 0 ;
+                while(counter< toBeProcessed.length){
+                    if(toBeProcessed[counter].equals("1")){
+                        break ;
+                    }
+                    counter++ ;
+                }
+                column= counter+ 1 ;
             }
+
             numberOfIterations++ ;
         }
 
-        for(int r = 0 ; r< array.length ; r++){
-            for(int col= 0 ; col< array[r].length ; col++){
-                if(array[r][col]==1){
-                    row = r ;
-                    column = col ;
-                }
-            }
-        }
-
-
-
+        int numberOfOperations = (Math.abs(x-column) + Math.abs(y-row)) ;
+        System.out.println(numberOfOperations);
 
     }
 }
