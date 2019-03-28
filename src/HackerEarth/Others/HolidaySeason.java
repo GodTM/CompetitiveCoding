@@ -1,3 +1,4 @@
+package HackerEarth.Others ;
 import java.util.* ;
 
 // to be solved
