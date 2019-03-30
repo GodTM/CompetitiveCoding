@@ -14,9 +14,7 @@ public class Elephant617A {
                 steps +=  rem/counter ;
                 covered+= steps * counter ;
                 rem-= covered ;
-                if(covered==distance){
-                    break ;
-                }
+                if(covered==distance){ break ; }
             }
         }
 
