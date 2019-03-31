@@ -2,7 +2,10 @@ package CodeForcesSolutions.B;
 
 import java.util.Scanner;
 
-
+/**
+ * solved for single case
+ * to be solved for multiple iterations
+ * */
 public class QueueSchool266B {
     public static void main(String args[]){
         Scanner input = new Scanner(System.in) ;
