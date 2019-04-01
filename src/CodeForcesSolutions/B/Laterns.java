@@ -5,9 +5,11 @@
  *
  * */
 
-package CodeForcesSolutions.B;
+//package CodeForcesSolutions.B;
 
-import java.math.BigInteger;
+import java.math.BigDecimal;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Laterns {
@@ -79,41 +81,66 @@ public class Laterns {
         Scanner input = new Scanner(System.in) ;
         String[] inputs = input.nextLine().trim().split("\\s") ;
         int numberOfLaterns = Integer.parseInt(inputs[0]) ;
-        BigInteger distance = new BigInteger(inputs[1]) ;
+        BigDecimal distance = new BigDecimal(inputs[1]) ;
         int[] distances = new int[numberOfLaterns] ;
-        if(numberOfLaterns>=1 && numberOfLaterns<=1000){
-            String[] dStr = input.nextLine().trim().split("\\s") ;
-            if(dStr.length == distances.length){
-                for(int counter = 0 ;  counter< distances.length ; counter++){ distances[counter]= Integer.parseInt(dStr[counter].trim()) ; }
-            }
-            Laterns.mergeSort(distances , 0 , distances.length-1);
-
-            int maxDistance= 0 ;
-            for(int counter = 0 ; counter< distances.length -1; counter++){
-                int diff = distances[counter+1] - distances[counter] ;
-                if(diff>maxDistance){
-                    maxDistance = diff  ;
+        if(numberOfLaterns>=1 && numberOfLaterns<=1000) {
+            String[] dStr = input.nextLine().trim().split("\\s");
+            if (dStr.length == distances.length) {
+                for (int counter = 0; counter < distances.length; counter++) {
+                    distances[counter] = Integer.parseInt(dStr[counter].trim());
                 }
             }
-            BigInteger maxDifferrence= new BigInteger(String.valueOf(maxDistance)) ;
+            //Laterns.mergeSort(distances , 0 , distances.length-1);
+            Laterns.insertionSort(distances);
 
-            // side case for end
-            if(distance.subtract(
-                    new BigInteger(String.valueOf(distances[distances.length-1])))
-                    .compareTo(new BigInteger(String.valueOf(maxDistance)))>=0){
-                maxDifferrence = distance.subtract(new BigInteger(String.valueOf(distances[distances.length-1]))) ;
+            if (!(distance.compareTo(BigDecimal.ONE)==0)) {
+                BigDecimal finalPointDiff = null;
+                LinkedList<Double> differencesList = new LinkedList<>();
+                double firstDifference = 0;
+                int diff = 0;
+                for (int counter = 0; counter < distances.length - 1; counter++) {
+
+
+                    if (counter == 0) {
+                        firstDifference = distances[counter];
+                    }
+                    if (counter == distances.length - 2) {
+                        finalPointDiff = distance.subtract(new BigDecimal(String.valueOf(distances[counter + 1])));
+                    }
+
+                    diff = distances[counter + 1] - distances[counter];
+                    differencesList.add(diff / 2.0);
+                }
+
+
+                differencesList.add(firstDifference);
+                double max = 0;
+                Iterator<Double> iterator = differencesList.listIterator();
+                while (iterator.hasNext()) {
+                    double d = iterator.next();
+                    if (d > max) {
+                        max = d;
+                    }
+                }
+
+
+                BigDecimal finalMax = new BigDecimal(String.valueOf(max));
+                assert finalPointDiff != null;
+                if (finalMax.compareTo(finalPointDiff) < 0.0) {
+                    finalMax = finalPointDiff;
+                }
+
+
+                System.out.println(finalMax);
+
+
             }
 
-            // side case for start
-            if(maxDifferrence.compareTo(
-                new BigInteger(String.valueOf(distances[0])).subtract()
-                )<0)
 
-            {
-
-
+            else{
+                System.out.println(dStr[0]);
             }
-
         }
+
     }
 }
