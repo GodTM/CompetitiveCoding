@@ -5,14 +5,14 @@ class MergeSort{
 
     public static void merge(int[] array , int left , int middle , int right ){
 
-        int leftArrSize  = middle - left + 1 ;
+        int leftArraySize  = middle - left + 1 ;
         int rightArrSize = right - middle ;
 
-        int[] leftArr = new int[leftArrSize]  ;
+        int[] leftArr = new int[leftArraySize]  ;
         int[] rightArr= new int[rightArrSize]  ;
 
         // copy data into temporary arrays
-        for(int counter = 0 ; counter<leftArrSize ; counter++){
+        for(int counter = 0 ; counter<leftArraySize ; counter++){
             leftArr[counter] = array[counter+left] ;
         }
 
@@ -23,7 +23,7 @@ class MergeSort{
         int i = 0 ,  j = 0 ;
         int k = left ;
 
-        while(i< leftArrSize && j <rightArrSize){
+        while(i< leftArraySize && j <rightArrSize){
 
             if(leftArr[i]<=rightArr[j]){
 
@@ -38,7 +38,7 @@ class MergeSort{
         }
 
         // copy the remaining elements
-        while(i<leftArrSize){
+        while(i<leftArraySize){
             array[k] = leftArr[i] ;
             i+= 1;
             k+= 1;

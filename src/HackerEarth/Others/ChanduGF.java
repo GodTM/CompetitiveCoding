@@ -7,14 +7,14 @@ class ChanduGF{
     // merge
     public static void merge(long[] array ,int left , int right , int middle){
 
-        int leftArrSize = middle - left + 1;
+        int leftArraySize = middle - left + 1;
         int rightArrSize= right - middle ;
 
-        long[] leftArray = new long[leftArrSize];
+        long[] leftArray = new long[leftArraySize];
         long[] rightArray = new long[rightArrSize];
 
         // copy data
-        for(int counter = 0 ; counter<leftArrSize;counter++){
+        for(int counter = 0 ; counter<leftArraySize;counter++){
             leftArray[counter]  =  array[left+ counter] ;
         }
         for(int counter = 0; counter< rightArrSize ; counter++){
@@ -22,7 +22,7 @@ class ChanduGF{
         }
 
         int i= 0  , j = 0 , k = left ;
-        while(i < leftArrSize && j < rightArrSize){
+        while(i < leftArraySize && j < rightArrSize){
 
             if(leftArray[i]<= rightArray[j]){
 
@@ -35,7 +35,7 @@ class ChanduGF{
             k++ ;
         }
         // copying the rest of the elements
-        while(i<leftArrSize){
+        while(i<leftArraySize){
             array[k] = leftArray[i] ;
             i++ ; k++ ;
         }

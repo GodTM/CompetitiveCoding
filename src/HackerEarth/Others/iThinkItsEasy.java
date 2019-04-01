@@ -5,15 +5,15 @@ class iThinkItsEasy{
 
     public static void merge(String[] array , int left , int right , int middle){
 
-        int leftArrSize = middle - left + 1;
+        int leftArraySize = middle - left + 1;
         int rightArrSize= right - middle ;
 
-        String[] leftArray = new String[leftArrSize] ;
+        String[] leftArray = new String[leftArraySize] ;
         String[] rightArray = new String[rightArrSize] ;
 
         int i = 0 , j = 0 , k = left ; // why k = left ???
         // copying elements
-        while(i<leftArrSize && j < rightArrSize){
+        while(i<leftArraySize && j < rightArrSize){
 
             if(leftArray[i].length()<= rightArray[j].length()){
                 array[k] = array[i] ;
@@ -27,7 +27,7 @@ class iThinkItsEasy{
         }
 
         // copying the rest of the elements ;
-        while(i<  leftArrSize){
+        while(i<  leftArraySize){
             array[k] = leftArray[i] ;
             i++ ;
             k++ ;
