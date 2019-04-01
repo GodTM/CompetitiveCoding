@@ -1,4 +1,4 @@
-//package CodeForcesSolutions.A;
+package CodeForcesSolutions.A;
 
 import java.util.HashSet;
 import java.util.Scanner;
