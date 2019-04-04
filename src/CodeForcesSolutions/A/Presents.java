@@ -1,6 +1,8 @@
 package CodeForcesSolutions.A;
 
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Presents {
@@ -14,10 +16,18 @@ public class Presents {
             numbers[counter] = Integer.parseInt(numbersStr[counter]) ;
         }
 
-        for(int counter = 0 ; counter< numbers.length ; counter++){
-            for ( int counter2 = 0 ; counter2<numbers.length ; counter2++){
+        HashMap<Integer , Integer> map = new HashMap<>() ;
 
-            }
+        for(int counter = 0 ; counter< numbers.length ; counter++){
+            map.put(counter+1 , numbers[counter]) ;
+        }
+        int[] answer = new int[map.size()] ;
+        for(Map.Entry<Integer,Integer> entrySet : map.entrySet()){
+            answer[entrySet.getValue() -1]= entrySet.getKey() ;
+        }
+
+        for(int i:answer){
+            System.out.print(i+" ");
         }
 
 
