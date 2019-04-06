@@ -9,8 +9,6 @@ import java.util.LinkedList;
  *
  * */
 
-
-
 public class Kruskal {
     int V , E ;
     int[][] AdjArray ;
