@@ -1,4 +1,4 @@
-//package CodeForcesSolutions.B;
+package CodeForcesSolutions.B;
 
 import java.util.Scanner;
 
