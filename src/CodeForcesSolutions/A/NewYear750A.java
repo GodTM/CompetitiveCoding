@@ -1,4 +1,4 @@
-//package CodeForcesSolutions.A;
+package CodeForcesSolutions.A;
 import java.util.Scanner;
 public class NewYear750A {
     public static void main(String args[]){
