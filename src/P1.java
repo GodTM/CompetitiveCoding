@@ -1,19 +1,19 @@
-package CodeJam.Online;
+/*
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+Code Jam problem 1 
+
+*/
+
 import java.math.BigInteger;
-import java.util.LinkedList;
 import java.util.Scanner;
 
- public class P1 {
-
+ class P1 {
+     
     public static void main(String args[]){
-        Scanner input = new Scanner(new BufferedReader(new InputStreamReader(System.in))) ;
+        Scanner input = new Scanner(System.in) ;
         int testCases  = Integer.parseInt(input.nextLine().trim() );
         boolean validBoundaries =  (testCases>=1 && testCases<=100) ;
         if(validBoundaries){
-
             while (testCases>0) {
                 String inStr = input.nextLine().trim();
                 int position = 0;
