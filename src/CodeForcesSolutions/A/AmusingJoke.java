@@ -1,5 +1,8 @@
 package CodeForcesSolutions.A;
+/*
 
+incomplete
+*/
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
