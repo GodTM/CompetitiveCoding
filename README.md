@@ -1,2 +1,4 @@
 # CompetitiveCoding
-Sample Solutions for all The Problems given on HackerEarth, HackerRank, and CodeForces. The Codeforces solutions are divided into different folder depending upon the difficulty levels (A-G) in ascending order.
+Sample Solutions for the problems given on HackerEarth and CodeForces. 
+CodeForces divides the problems into ascending order of difficulty (A - G) .
+Currently, this repository only contains solutions to problems in (A-C) subdivision.
