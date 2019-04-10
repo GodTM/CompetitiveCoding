@@ -1,39 +1,35 @@
-//package CodeForcesSolutions.A;
-
+package CodeForcesSolutions.A;
 import java.util.Scanner;
-
 public class Magnets {
     public static void main(String args[]) {
         Scanner input = new Scanner(System.in);
         int numberOfMagnets = Integer.parseInt(input.nextLine().trim());
-        int[] magArr = new int[numberOfMagnets];
-        for (int counter = 0; counter < magArr.length; counter++) {
-            magArr[counter] = Integer.parseInt(input.nextLine().trim());
+        String[] magnets = new String[numberOfMagnets];
+        for (int counter = 0; counter < magnets.length; counter++) {
+            magnets[counter] = input.nextLine().trim();
         }
-        int groupCount = 0;
-        if (magArr.length == 1) {
-            System.out.println(1);
-        } else if(magArr.length==2){
-            if(magArr[0]==magArr[1]){
-                System.out.println(1);
-            }else{
-                System.out.println(2);
-            }
+        int counter = 0;
+        int numberOfGroups = 0;
 
-        }else {
-
-            for (int counter = 0; counter < magArr.length - 1; counter++) {
-                for (int counter2 = counter + 1; counter2 < magArr.length; counter2++) {
-                    if (magArr[counter] == magArr[counter2]) {
-                        continue;
-                    }
-                    groupCount += 1;
-                    counter = counter2 - 1;
+        if (magnets.length == 1) {
+            numberOfGroups = 1;
+        } else {
+            String current = magnets[0] ;
+            numberOfGroups = 1 ;
+            while (counter < magnets.length-1) {
+                if(magnets[counter+1].equals(current)){
+                    counter++ ;
+                    continue;
+                }
+                else{
+                    current = magnets[counter+1] ;
+                    counter++ ;
+                    numberOfGroups+=1 ;
                 }
             }
-
-            System.out.println(groupCount);
         }
+        System.out.println(numberOfGroups);
     }
 }
+
 
