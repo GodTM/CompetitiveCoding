@@ -1,0 +1,44 @@
+package CodeForcesSolutions.A;
+import java.util.Scanner;
+public class Keyboard474A {
+    public static void main(String args[]){
+        String in = "qwertyuiopasdfghjkl;zxcvbnm,./" ;
+        String[] strings = in.trim().split("") ;
+        String out = "" ;
+        Scanner input = new Scanner(System.in) ;
+        String leftOrRight = input.nextLine().trim().toUpperCase() ;
+        if(leftOrRight.equals("R")){
+                String[] typed = input.nextLine().trim().split("") ;
+                for(int counter = 0 ; counter< typed.length ; counter++){
+                    for(int c = 0 ; c< strings.length ; c++){
+                        if(typed[counter].equals(strings[c])){
+                            if(c==0){
+                                out = out.concat( strings[strings.length- 1]) ;
+                            }
+                            out = out.concat(strings[c-1]) ;
+                        }
+                    }
+                }
+
+
+
+        }
+        else{
+            String[] typed = input.nextLine().trim().split("") ;
+            for(int counter = 0 ; counter< typed.length ; counter++){
+                for(int c = 0 ; c< strings.length ; c++){
+                    if(typed[counter].equals(strings[c])){
+                        if(c== strings.length-1){
+                            out = out.concat( strings[0]) ;
+                        }
+                        out = out.concat(strings[c+1]) ;
+                    }
+                }
+            }
+
+        }
+
+        System.out.println(out);
+
+    }
+}
