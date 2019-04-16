@@ -1,0 +1,80 @@
+package CodeForcesSolutions.Div3.Apr16;
+
+import java.util.*;
+
+public class MakeEqualB {
+    public static void insertionSort(int[] array){
+        for(int nextElement = 1 ; nextElement< array.length ; nextElement++){
+            int key = array[nextElement] ;
+            int current = nextElement - 1;
+            while(current>= 0 && array[current]> key){
+                array[current+1] = array[current] ;
+                current-= 1 ;
+            }
+            array[current+1] = key ;
+        }
+    }
+    public static void main(String args[]){
+        Scanner input = new Scanner(System.in) ;
+        int arrSize = Integer.parseInt(input.nextLine().trim()) ;
+        int[] numbers = new int[arrSize] ;
+
+        String[] inStrs = input.nextLine().trim().split("\\s") ;
+        for(int c  = 0 ; c < inStrs.length ; c++){ numbers[c] = Integer.parseInt(inStrs[c].trim()) ; }
+        HashMap<Integer , Integer> map = new HashMap<>() ;
+        Set <Integer> set = new HashSet<>() ;
+        for(int i : numbers){ set.add(i) ; }
+        for(Integer i: set){ int j = i ; map.put(j , 0) ; }
+        // counting each element
+        for(int counter2= 0; counter2< numbers.length ; counter2++){
+            if(map.containsKey(numbers[counter2])){
+                map.put(numbers[counter2] , map.get(numbers[counter2]) + 1 ) ;
+            }
+        }
+        boolean twoMaxElements = false ;
+        int maxElementSize = 0 ; int maxElement = 0 ;
+        for(Map.Entry<Integer, Integer> entry : map.entrySet()){
+            if(entry.getValue()> maxElementSize){ maxElementSize = entry.getValue() ; maxElement= entry.getKey() ;  }
+        }
+
+        int count = 0 ;
+        for(Map.Entry<Integer, Integer> entry : map.entrySet()){
+            if(entry.getValue()== maxElementSize){count+= 1; }
+        }
+        if(count>1){ twoMaxElements = true ; }
+
+        MakeEqualB.insertionSort(numbers);
+        int min = numbers[0] ;
+        int max = numbers[numbers.length - 1] ;
+        if(max==min){System.out.println(0);}
+        else{
+            int counterCheck = -1 ;
+            for(int c  = 0 ; c < 100 ; c++){
+                if(min!= maxElement && maxElement!= max && !twoMaxElements) {
+                    if (min + c == maxElement && max - c == maxElement) {
+                        counterCheck = c;
+                    }
+                }else if (min == maxElement && !twoMaxElements){
+                     if(max - c== maxElement){
+                         counterCheck = c ;
+                     }
+                }
+                else if(max == maxElement){
+                    if(min+ c  == maxElement && !twoMaxElements ){
+                        counterCheck = c ;
+                    }
+                }else{
+                    if (min + c ==  max - c ) {
+                        counterCheck = c;
+                    }
+                }
+
+            }
+           System.out.println(counterCheck);
+        }
+
+
+
+
+    }
+}
